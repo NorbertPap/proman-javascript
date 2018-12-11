@@ -63,7 +63,8 @@ def boards():
         status = f'Logged in as {session["username"]}'
     else:
         status = 'Not logged in'
-    return render_template('boards.html', status=status)
+    board_tree = data_manager.get_board_tree(session.get('user_id'))
+    return render_template('boards.html', status=status, board_tree=board_tree)
 
 
 def main():
