@@ -81,4 +81,3 @@ let sampleData = {
 };
 
 localStorage.setItem(keyInLocalStorage, JSON.stringify(sampleData));
-
