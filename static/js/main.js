@@ -1,13 +1,15 @@
-// // This function is to initialize the application
-// function init() {
-//     // init data
-//     dataHandler.init();
-//     // loads the boards to the screen
-//     dom.loadBoards();
-//
-// }
-//
-// init();
+function makeCardsDragAndDroppable()
+{
+    for(let i=0; i<document.getElementsByClassName('container').length; i++)
+    {
+        let columns = [];
+        for(let j=0; j<document.getElementsByClassName('container')[i].getElementsByClassName('cards_column').length; j++)
+        {
+            columns.push(document.getElementById(`${String(i)+String(j)}`));
+        }
+        dragula(columns);
+    }
+}
 
 function makeBoardAddingButtonFunctional()
 {
@@ -108,12 +110,14 @@ function switchContent(response)
     let newBoardsSpace = fakeDiv.getElementsByClassName('boards-space')[0];
     let oldBoardsSpace = document.getElementsByClassName('boards-space')[0];
     oldBoardsSpace.parentElement.replaceChild(newBoardsSpace, oldBoardsSpace);
+    makeCardsDragAndDroppable();
 }
 
 
 function main()
 {
     makeBoardAddingButtonFunctional();
+    makeCardsDragAndDroppable()
 }
 
 main();
