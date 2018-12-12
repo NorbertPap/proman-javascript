@@ -7,9 +7,3 @@ for(let i=0; i<document.getElementsByClassName('container').length; i++)
     }
     dragula(columns);
 }
-// let columns = [];
-// for(let j=0; j<document.getElementsByClassName('container')[0].getElementsByClassName('cards_column').length; j++)
-// {
-//     columns.push(document.getElementById(`0${String(j)}`));
-// }
-// dragula(columns);

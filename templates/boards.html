@@ -23,9 +23,12 @@
     </head>
     <body>
         <h1>ProMan</h1>
+        <button type="button" class="btn btn-primary" id="add-board">Add board</button>
+        <div id="new-board-input"></div>
         {% if board_tree|length == 0 %}
             <p>No boards yet</p>
         {% else %}
+            <div class="boards-space">
             {% for i in range(board_tree|length) %}
                 <div class="container" id="{{ i }}">
                     <div class="row">
@@ -46,6 +49,7 @@
                     </div>
                 </div>
             {% endfor %}
+            </div>
         {% endif %}
         </body>
 </html>

@@ -2,6 +2,7 @@ from flask import Flask, render_template, session, redirect, url_for, request
 from functools import wraps
 from werkzeug.security import generate_password_hash
 import data_manager
+import json
 
 app = Flask(__name__)
 app.secret_key = '\xfd{H\xe5<\x95\xf9\xe3\x96.5\xd1\x01O<!\xd5\xa2\xa0\x9fR"\xa1\xa8'
@@ -54,6 +55,15 @@ def register():
 def logout():
     session.clear()
     return redirect(url_for('login'))
+
+
+@app.route('/board', methods=['POST'])
+def register_new_board():
+    new_board_name = request.json.get('boardName')
+    new_board_type = request.json.get('boardType')
+    user_id = session.get('user_id')
+    data_manager.register_new_board(new_board_name, new_board_type, user_id)
+    return json.dumps({'attempt': 'successful'})
 
 
 @app.route("/")
