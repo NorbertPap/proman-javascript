@@ -101,6 +101,9 @@
     {% if board_tree|length == 0 %}
         <p>No boards yet</p>
     {% else %}
+        <button type="button" id="add-board" class="btn btn-primary">Add board</button>
+        <div id="new-board-input"></div>
+        <div class="boards-space">
         {% for i in range(board_tree|length) %}
             <div class="container" id="{{ i }}">
                 <h2 class="row">
@@ -122,7 +125,9 @@
                         </div>
                     {% endfor %}
                 </div>
+            </div>
         {% endfor %}
+        </div>
     {% endif %}
     </div>
     </body>

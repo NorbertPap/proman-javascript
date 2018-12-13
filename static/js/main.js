@@ -3,6 +3,8 @@ function init() {
     submitButton();
     loginButton();
     registerButton();
+    makeCardsDragAndDroppable();
+    makeBoardAddingButtonFunctional();
     // init data
     dataHandler.init();
     // loads the boards to the screen
@@ -10,30 +12,6 @@ function init() {
 }
 
 
-function registerButton()
-{
-    let btn = document.getElementsByClassName('btn-outline-primary')[1];
-    btn.addEventListener('click', function () {
-        let button = document.getElementById('login-register-btn');
-        button.innerText = 'Register';
-        let username = document.getElementById('exampleInputUsername1');
-        username.style.display = 'block';
-    });
-}
-
-
-function loginButton()
-{
-    let username = document.getElementById('exampleInputUsername1');
-    username.style.display = 'none';
-    let btn = document.getElementsByClassName('btn-outline-primary')[0];
-    btn.addEventListener('click', function () {
-        let button = document.getElementById('login-register-btn');
-        button.innerText = 'Login';
-        let username = document.getElementById('exampleInputUsername1');
-        username.style.display = 'none';
-    });
-}
 function makeCardsDragAndDroppable()
 {
     for(let i=0; i<document.getElementsByClassName('container').length; i++)
@@ -50,7 +28,7 @@ function makeCardsDragAndDroppable()
 function makeBoardAddingButtonFunctional()
 {
     let boardAddingButton = document.getElementById('add-board');
-    boardAddingButton.addEventListener('click', createNewBoard)
+    boardAddingButton.addEventListener('click', createNewBoard);
 }
 
 
@@ -91,46 +69,11 @@ function createInputForNewBoard()
 }
 
 
-function registerNewBoard()
-{
+function registerNewBoard() {
     let boardName = document.getElementById('new-board-name').value;
     let boardType = document.getElementById('private-radio').checked ? 'private' : 'public';
     sendBoardDataToServer(boardName, boardType);
     closeInput();
-
-
-function submitButton()
-{
-    let btn = document.getElementById('login-register-btn');
-    btn.addEventListener('click', function () {
-        let btn = document.getElementsByClassName('btn btn-outline-primary active');
-        for (let l_or_r of btn) {
-            let statusBtn = l_or_r.textContent.trim();
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", '/login_and_register', true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    if (xhr.responseText === 'success') {
-                        location.reload();
-                    } else if (xhr.responseText === 'failed login') {
-                        let alert = document.getElementById('alert-text');
-                        alert.innerText = 'Invalid E-mail or Password!';
-                    } else {
-                        let alert = document.getElementById('alert-text');
-                        alert.innerText = 'E-mail or Username already in use!';
-                    }
-                }
-            };
-            xhr.send(JSON.stringify({
-                'status' : statusBtn,
-                'email': document.getElementById('exampleInputEmail1').value,
-                'password': document.getElementById('exampleInputPassword1').value,
-                'username' : document.getElementById('exampleInputUsername1').value
-            }));
-            event.stopPropagation();
-        }
-    });
 }
 
 
@@ -183,10 +126,67 @@ function switchContent(response)
 }
 
 
-function main()
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+function submitButton()
 {
-    makeBoardAddingButtonFunctional();
-    makeCardsDragAndDroppable()
+    let btn = document.getElementById('login-register-btn');
+    btn.addEventListener('click', function () {
+        let btn = document.getElementsByClassName('btn btn-outline-primary active');
+        for (let l_or_r of btn) {
+            let statusBtn = l_or_r.textContent.trim();
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", '/login_and_register', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    if (xhr.responseText === 'success') {
+                        location.reload();
+                    } else if (xhr.responseText === 'failed login') {
+                        let alert = document.getElementById('alert-text');
+                        alert.innerText = 'Invalid E-mail or Password!';
+                    } else {
+                        let alert = document.getElementById('alert-text');
+                        alert.innerText = 'E-mail or Username already in use!';
+                    }
+                }
+            };
+            xhr.send(JSON.stringify({
+                'status' : statusBtn,
+                'email': document.getElementById('exampleInputEmail1').value,
+                'password': document.getElementById('exampleInputPassword1').value,
+                'username' : document.getElementById('exampleInputUsername1').value
+            }));
+            event.stopPropagation();
+        }
+    });
 }
 
-main();
+
+function registerButton()
+{
+    let btn = document.getElementsByClassName('btn-outline-primary')[1];
+    btn.addEventListener('click', function () {
+        let button = document.getElementById('login-register-btn');
+        button.innerText = 'Register';
+        let username = document.getElementById('exampleInputUsername1');
+        username.style.display = 'block';
+    });
+}
+
+
+function loginButton()
+{
+    let username = document.getElementById('exampleInputUsername1');
+    username.style.display = 'none';
+    let btn = document.getElementsByClassName('btn-outline-primary')[0];
+    btn.addEventListener('click', function () {
+        let button = document.getElementById('login-register-btn');
+        button.innerText = 'Login';
+        let username = document.getElementById('exampleInputUsername1');
+        username.style.display = 'none';
+    });
+}
+
+init();
