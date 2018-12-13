@@ -125,7 +125,7 @@
             <div class="container" id="{{ i }}">
                 <h2 class="row private-{{board_tree[i].get('private')}}">
                     {{ board_tree[i].get('title') }}
-                    <form class="form-inline">
+                    <form class="form-inline margined">
                         <input type="text" class="form-control" value="" id="{{board_tree[i].get('id')}}">
                         <button type="button" class="btn btn-outline-secondary" id="{{ i }}-column">Create new column</button>
                     </form>
