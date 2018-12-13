@@ -5,6 +5,7 @@ function init() {
     registerButton();
     makeCardsDragAndDroppable();
     makeBoardAddingButtonFunctional();
+    buttonPress();
     // init data
     dataHandler.init();
     // loads the boards to the screen
@@ -113,6 +114,7 @@ function switchContent(response)
     let oldBoardsSpace = document.getElementsByClassName('boards-space')[0];
     oldBoardsSpace.parentElement.replaceChild(newBoardsSpace, oldBoardsSpace);
     makeCardsDragAndDroppable();
+    buttonPress();
 }
 
 
@@ -176,6 +178,52 @@ function loginButton()
         button.innerText = 'Login';
         let username = document.getElementById('exampleInputUsername1');
         username.style.display = 'none';
+    });
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const buttonPress = () => {
+    const btnClasses = document.getElementsByClassName('newColumnBtn');
+    for (let btnClass of btnClasses) {
+        btnClass.addEventListener('click', createInputForNewColumn);
+    }
+};
+
+
+function newColumn() {
+    let columnName = document.getElementById('new-column-name');
+    let getColumName = columnName.value;
+    sendColumnDataToServer(columnName()
+}
+
+
+const createNewColumn = () => {
+    let newColumnDiv = document.createElement('div').className = 'input-column-name';
+    let inputColumnName = document.createElement('input').id = 'new-column-name';
+    let input = '';
+    inputColumnName.setAttribute("value", input);
+    let newColumn = document.createTextNode(input);
+    let addNewColumnButton = document.createElement('button').id = 'column_name';
+};
+
+
+function sendColumnDataToServer(columnName, ) {
+    const url = '/column';
+    const userInput = {columnName: columnName, };
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userInput)
+    })
+    .then((response) => response.json())
+    .then((response) => {
+        if(response.attempt === 'successful') {
+            reloadPage()
+        }
     });
 }
 

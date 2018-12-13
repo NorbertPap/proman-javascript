@@ -34,6 +34,14 @@ def register_new_board():
     return json.dumps({'attempt': 'successful'})
 
 
+@app.route('/column', methods=['POST'])
+def add_new_column():
+    column_name = request.json.get('columnName')
+    board_id = session.get('board_id')
+    data_manager.add_new_column(column_name, board_id)
+    return json.dumps({'attempt': 'successful'})
+
+
 @app.route("/")
 def boards():
     ''' this is a one-pager which shows all the boards and cards '''

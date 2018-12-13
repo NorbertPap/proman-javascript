@@ -126,6 +126,10 @@
                 <h2 class="row private-{{board_tree[i].get('private')}}">
                     {{ board_tree[i].get('title') }}
                     <i class="fas fa-angle-up"></i>
+                    <form class="form-inline">
+                        <input type="text" class="form-control" value="" id="{{board_tree[i].get('id')}}">
+                        <button type="button" class="btn btn-outline-secondary" id="{{ i }}-column">Create new column</button>
+                    </form>
                 </h2>
                 <div class="row private-{{board_tree[i].get('private')}}" id="{{ i }}-body">
                     {% for j in range(board_tree[i].get('columns')|length) %}
