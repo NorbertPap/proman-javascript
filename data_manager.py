@@ -41,3 +41,12 @@ def get_board_tree(cursor, user_id):
             board_column['cards'] = cursor.fetchall()
     return boards
 
+
+@connection.connection_handler
+def register_new_board(cursor, board_name, board_type, user_id):
+    if board_type == 'private':
+        board_type=1
+    else:
+        board_type=0
+    cursor.execute("""INSERT INTO boards (title, private, user_id)
+                      VALUES (%(board_name)s, %(board_type)s, %(user_id)s)""", {'board_name': board_name, 'board_type': board_type, 'user_id': user_id})
