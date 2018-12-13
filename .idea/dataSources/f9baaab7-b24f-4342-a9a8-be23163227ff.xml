@@ -93,8 +93,8 @@
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionTimestamp>2018-12-12.11:48:10.157</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1009</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-12-13.20:07:33.103</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1048</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -194,7 +194,7 @@
     <table id="33" parent="19" name="users">
       <ObjectId>65909</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>1009</StateNumber>
+      <StateNumber>1048</StateNumber>
     </table>
     <column id="34" parent="30" name="board_id">
       <Position>1</Position>
@@ -398,22 +398,28 @@
       <StateNumber>1009</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="63" parent="33" name="users_id_uindex">
+    <column id="63" parent="33" name="email">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1048</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="64" parent="33" name="users_id_uindex">
       <ObjectId>65933</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="64" parent="33" name="users_pkey">
+    <index id="65" parent="33" name="users_pkey">
       <ObjectId>65916</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="65" parent="33" name="users_user_name_uindex">
+    <index id="66" parent="33" name="users_user_name_uindex">
       <ObjectId>65934</ObjectId>
       <ColNames>user_name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="66" parent="33" name="users_pkey">
+    <key id="67" parent="33" name="users_pkey">
       <ObjectId>65917</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>

@@ -4,31 +4,41 @@ import psycopg2
 
 
 @connection.connection_handler
-def register_new_user(cursor, username, password):
+def register_new_user(cursor, username, password, email):
     try:
-        cursor.execute("""INSERT INTO users (user_name, hashed_pw)
-                          VALUES (%(name)s, %(pw)s);""", {'name': username, 'pw': password})
-        return True
+        cursor.execute("""
+                        SELECT * FROM users
+                        WHERE email = %(email)s OR user_name = %(username)s;
+                        """, {'email': email, 'username': username})
+        user = cursor.fetchall()
+        if user != []:
+            return False
+        else:
+            cursor.execute("""INSERT INTO users (user_name, hashed_pw, email)
+                              VALUES (%(name)s, %(pw)s, %(email)s);""",
+                           {'name': username, 'pw': password, 'email': email})
+            return True
     except psycopg2.IntegrityError:
         return False
 
 
 @connection.connection_handler
-def user_login(cursor, username, password):
+def user_login(cursor, email, password):
     cursor.execute("""
                     SELECT * FROM users
-                    WHERE user_name = %(username)s;
-                    """, {'username': username})
+                    WHERE email = %(email)s;
+                    """, {'email': email})
     user = cursor.fetchone()
     if user is not None:
-        return check_password_hash(user.get('hashed_pw'), password), user.get('id')
-    return False
+        return check_password_hash(user.get('hashed_pw'), password), user.get('id'), user.get('user_name')
+    return [False]
 
 
 @connection.connection_handler
 def get_board_tree(cursor, user_id):
     cursor.execute("""SELECT * FROM boards
-                      WHERE private = 0 OR user_id = %(user_id)s""", {'user_id': user_id})
+                      WHERE private = 0 OR user_id = %(user_id)s
+                      ORDER by private DESC""", {'user_id': user_id})
     boards = cursor.fetchall()
     for board in boards:
         cursor.execute("""SELECT * FROM board_columns
@@ -40,6 +50,16 @@ def get_board_tree(cursor, user_id):
                               ORDER BY position ASC""", {'board_column_id': board_column.get('id')})
             board_column['cards'] = cursor.fetchall()
     return boards
+
+
+@connection.connection_handler
+def register_new_board(cursor, board_name, board_type, user_id):
+    if board_type == 'private':
+        board_type=1
+    else:
+        board_type=0
+    cursor.execute("""INSERT INTO boards (title, private, user_id)
+                      VALUES (%(board_name)s, %(board_type)s, %(user_id)s)""", {'board_name': board_name, 'board_type': board_type, 'user_id': user_id})
 
 
 @connection.connection_handler
