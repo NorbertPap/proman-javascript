@@ -25,6 +25,15 @@ def logout():
     return redirect(url_for('boards'))
 
 
+@app.route('/board', methods=['POST'])
+def register_new_board():
+    new_board_name = request.json.get('boardName')
+    new_board_type = request.json.get('boardType')
+    user_id = session.get('user_id')
+    data_manager.register_new_board(new_board_name, new_board_type, user_id)
+    return json.dumps({'attempt': 'successful'})
+
+
 @app.route("/")
 def boards():
     ''' this is a one-pager which shows all the boards and cards '''
