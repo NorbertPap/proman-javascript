@@ -6,6 +6,7 @@ function init() {
     makeCardsDragAndDroppable();
     makeBoardAddingButtonFunctional();
     buttonPress();
+    openBoards();
     // init data
     dataHandler.init();
     // loads the boards to the screen
@@ -115,8 +116,51 @@ function switchContent(response)
     oldBoardsSpace.parentElement.replaceChild(newBoardsSpace, oldBoardsSpace);
     makeCardsDragAndDroppable();
     buttonPress();
+    openBoards();
 }
 
+
+function openBoards()
+{
+    let boardOpenerElements = document.getElementsByClassName('board-opener');
+    for(let boardOpenerElement of boardOpenerElements)
+    {
+        boardOpenerElement.addEventListener('click', openBoard);
+    }
+}
+
+
+function openBoard(event)
+{
+    event.target.parentElement.nextElementSibling.hidden = false;
+    changeArrowToUpside(event.target);
+}
+
+
+function changeArrowToUpside(downsideArrow)
+{
+    let upsideArrow = document.createElement('i');
+    upsideArrow.classList.add('fas');
+    upsideArrow.classList.add('fa-angle-up');
+    downsideArrow.parentElement.replaceChild(upsideArrow, downsideArrow);
+    upsideArrow.addEventListener('click', closeBoard)
+}
+
+function closeBoard(event)
+{
+    event.target.parentElement.nextElementSibling.hidden = true;
+    changeArrowToDownside(event.target);
+}
+
+
+function changeArrowToDownside(upsideArrow)
+{
+    let downsideArrow = document.createElement('i');
+    downsideArrow.classList.add('fas');
+    downsideArrow.classList.add('fa-angle-down');
+    upsideArrow.parentElement.replaceChild(downsideArrow, upsideArrow);
+    downsideArrow.addEventListener('click', openBoard)
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -194,7 +238,7 @@ const buttonPress = () => {
 function newColumn() {
     let columnName = document.getElementById('new-column-name');
     let getColumName = columnName.value;
-    sendColumnDataToServer(columnName()
+    sendColumnDataToServer(columnName());
 }
 
 
