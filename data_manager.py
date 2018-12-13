@@ -41,3 +41,8 @@ def get_board_tree(cursor, user_id):
             board_column['cards'] = cursor.fetchall()
     return boards
 
+
+@connection.connection_handler
+def add_new_column(cursor, column_name, board_id):
+    cursor.execute("""INSERT INTO board_columns (column_name, board_id)
+                      VALUES (%(column_name)s, %(board_id)s)""", {'column_name': column_name, 'board_id': board_id})

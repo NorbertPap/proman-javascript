@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="proman@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.11">
+    <root id="1">
+      <ServerVersion>10.5</ServerVersion>
+    </root>
+    <database id="2" parent="1" name="ask-mate">
+      <ObjectId>49316</ObjectId>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="3" parent="1" name="codecool">
+      <ObjectId>49264</ObjectId>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="4" parent="1" name="project">
+      <ObjectId>49152</ObjectId>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="5" parent="1" name="proman">
+      <ObjectId>65906</ObjectId>
+      <Owner>postgres</Owner>
+      <IntrospectionStateNumber>116</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="6" parent="1" name="series">
+      <ObjectId>57714</ObjectId>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="7" parent="1" name="test">
+      <ObjectId>16384</ObjectId>
+      <Owner>postgres</Owner>
+    </database>
+    <role id="8" parent="1" name="pg_monitor">
+      <ObjectId>3373</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="9" parent="1" name="pg_read_all_settings">
+      <ObjectId>3374</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="10" parent="1" name="pg_read_all_stats">
+      <ObjectId>3375</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="11" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="12" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="13" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
+    </role>
+    <schema id="14" parent="5" name="information_schema">
+      <ObjectId>12703</ObjectId>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="15" parent="5" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+      <Comment>system catalog schema</Comment>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="16" parent="5" name="pg_temp_1">
+      <ObjectId>11736</ObjectId>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="17" parent="5" name="pg_toast">
+      <ObjectId>99</ObjectId>
+      <Comment>reserved schema for TOAST tables</Comment>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="18" parent="5" name="pg_toast_temp_1">
+      <ObjectId>11737</ObjectId>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="19" parent="5" name="public">
+      <ObjectId>2200</ObjectId>
+      <Comment>standard public schema</Comment>
+      <Owner>postgres</Owner>
+      <IntrospectionTimestamp>2018-12-12.11:48:10.157</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1009</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <access-method id="20" parent="5" name="btree">
+      <ObjectId>403</ObjectId>
+      <Comment>b-tree index access method</Comment>
+      <Handler>pg_catalog.bthandler</Handler>
+      <HandlerId>330</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="21" parent="5" name="hash">
+      <ObjectId>405</ObjectId>
+      <Comment>hash index access method</Comment>
+      <Handler>pg_catalog.hashhandler</Handler>
+      <HandlerId>331</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="22" parent="5" name="gist">
+      <ObjectId>783</ObjectId>
+      <Comment>GiST index access method</Comment>
+      <Handler>pg_catalog.gisthandler</Handler>
+      <HandlerId>332</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="23" parent="5" name="gin">
+      <ObjectId>2742</ObjectId>
+      <Comment>GIN index access method</Comment>
+      <Handler>pg_catalog.ginhandler</Handler>
+      <HandlerId>333</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="24" parent="5" name="spgist">
+      <ObjectId>4000</ObjectId>
+      <Comment>SP-GiST index access method</Comment>
+      <Handler>pg_catalog.spghandler</Handler>
+      <HandlerId>334</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="25" parent="5" name="brin">
+      <ObjectId>3580</ObjectId>
+      <Comment>block range index (BRIN) access method</Comment>
+      <Handler>pg_catalog.brinhandler</Handler>
+      <HandlerId>335</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <sequence id="26" parent="19" name="board_columns_id_seq">
+      <ObjectId>65935</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1009</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="27" parent="19" name="boards_id_seq">
+      <ObjectId>65918</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1009</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="28" parent="19" name="cards_id_seq">
+      <ObjectId>65948</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1009</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="29" parent="19" name="users_id_seq">
+      <ObjectId>65907</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1009</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <table id="30" parent="19" name="board_columns">
+      <ObjectId>65937</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1009</StateNumber>
+    </table>
+    <table id="31" parent="19" name="boards">
+      <ObjectId>65920</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1009</StateNumber>
+    </table>
+    <table id="32" parent="19" name="cards">
+      <ObjectId>65950</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1009</StateNumber>
+    </table>
+    <table id="33" parent="19" name="users">
+      <ObjectId>65909</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1009</StateNumber>
+    </table>
+    <column id="34" parent="30" name="board_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1009</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="35" parent="30" name="column_name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1009</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="36" parent="30" name="id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1009</StateNumber>
+      <DefaultExpression>nextval(&apos;board_columns_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>board_columns_id_seq</SequenceName>
+    </column>
+    <index id="37" parent="30" name="board_columns_board_column_id_uindex">
+      <ObjectId>65970</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="38" parent="30" name="board_columns_pk">
+      <ObjectId>65941</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="39" parent="30" name="board_columns_pk">
+      <ObjectId>65942</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>board_columns_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="40" parent="30" name="board_columns_boards_id_fk">
+      <ObjectId>65943</ObjectId>
+      <ColNames>board_id</ColNames>
+      <RefTableId>65920</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>boards</RefTableName>
+      <RefKeyName>boards_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="41" parent="31" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1009</StateNumber>
+      <DefaultExpression>nextval(&apos;boards_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>boards_id_seq</SequenceName>
+    </column>
+    <column id="42" parent="31" name="user_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1009</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="43" parent="31" name="private">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1009</StateNumber>
+      <DefaultExpression>0</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="44" parent="31" name="title">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1009</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="45" parent="31" name="boards_id_uindex">
+      <ObjectId>65932</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="46" parent="31" name="boards_pkey">
+      <ObjectId>65925</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="47" parent="31" name="boards_pkey">
+      <ObjectId>65926</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>boards_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="48" parent="31" name="boards_users_id_fk">
+      <ObjectId>65927</ObjectId>
+      <ColNames>user_id</ColNames>
+      <RefTableId>65909</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>users</RefTableName>
+      <RefKeyName>users_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="49" parent="32" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1009</StateNumber>
+      <DefaultExpression>nextval(&apos;cards_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>cards_id_seq</SequenceName>
+    </column>
+    <column id="50" parent="32" name="board_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1009</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="51" parent="32" name="title">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1009</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="52" parent="32" name="column_name">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1009</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="53" parent="32" name="board_column_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1009</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="54" parent="32" name="position">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1009</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="55" parent="32" name="cards_id_uindex">
+      <ObjectId>65969</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="56" parent="32" name="cards_pkey">
+      <ObjectId>65957</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="57" parent="32" name="cards_pkey">
+      <ObjectId>65958</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>cards_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="58" parent="32" name="cards_boards_id_fk">
+      <ObjectId>65959</ObjectId>
+      <ColNames>board_id</ColNames>
+      <RefTableId>65920</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>boards</RefTableName>
+      <RefKeyName>boards_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="59" parent="32" name="cards_board_columns_id_fk">
+      <ObjectId>65964</ObjectId>
+      <ColNames>board_column_id</ColNames>
+      <RefTableId>65937</RefTableId>
+      <RefColPositions>3</RefColPositions>
+      <RefTableName>board_columns</RefTableName>
+      <RefKeyName>board_columns_pk</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="60" parent="33" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1009</StateNumber>
+      <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>users_id_seq</SequenceName>
+    </column>
+    <column id="61" parent="33" name="user_name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1009</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="62" parent="33" name="hashed_pw">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1009</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="63" parent="33" name="users_id_uindex">
+      <ObjectId>65933</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="64" parent="33" name="users_pkey">
+      <ObjectId>65916</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="65" parent="33" name="users_user_name_uindex">
+      <ObjectId>65934</ObjectId>
+      <ColNames>user_name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="66" parent="33" name="users_pkey">
+      <ObjectId>65917</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

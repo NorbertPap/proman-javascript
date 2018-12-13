@@ -11,11 +11,11 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}"
         <script src="{{ url_for('static', filename='js/data_handler.js') }}" defer></script>
         <script src="{{ url_for('static', filename='js/dom.js') }}" defer></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js' defer></script>
         <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
         <!-- Dragula JS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.css" />
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js' defer></script>
-        <script src='{{ url_for('static', filename='js/my_dragula.js') }}' defer></script>
+{#        <script src='{{ url_for('static', filename='js/my_dragula.js') }}' defer></script>#}
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous" defer></script>
@@ -30,17 +30,19 @@
                 <div class="container" id="{{ i }}">
                     <div class="row">
                         {{ board_tree[i].get('title') }}
+                        <button class="newColumnBtn" id="{{ i }}-column">Create new column</button>
                     </div>
                     <div class="row">
                         {% for j in range(board_tree[i].get('columns')|length) %}
                             <div class="col">
-                                <div>{{ board_tree[i].get('columns')[j].get('column_name') }}</div>
+                            <div id="column-space">
+                                <div id="column_name">{{ board_tree[i].get('columns')[j].get('column_name') }}</div>
                                 <div id="{{ i }}{{ j }}" class="cards_column">
                                     {% for card in board_tree[i].get('columns')[j].get('cards') %}
                                         <div class="card">{{ card.get('title') }}</div>
                                     {% endfor %}
                                 </div>
-
+                            </div>
                             </div>
                         {% endfor %}
                     </div>

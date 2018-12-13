@@ -1,3 +1,4 @@
+import json
 from flask import Flask, render_template, session, redirect, url_for, request
 from functools import wraps
 from werkzeug.security import generate_password_hash
@@ -65,6 +66,14 @@ def boards():
         status = 'Not logged in'
     board_tree = data_manager.get_board_tree(session.get('user_id'))
     return render_template('boards.html', status=status, board_tree=board_tree)
+
+
+@app.route('/column', methods=['POST'])
+def add_new_column():
+    column_name = request.json.get('columnName')
+    board_id = session.get('board_id')
+    data_manager.add_new_column(column_name, board_id)
+    return json.dumps({'attempt': 'successful'})
 
 
 def main():
