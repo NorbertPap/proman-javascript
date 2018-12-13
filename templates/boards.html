@@ -98,19 +98,36 @@
     </nav>
     <!-- Navbar end -->
     <div class="body-content">
+        <div class="input-area">
+            <button type="button" id="add-board" class="btn btn-primary">Add board</button>
+            <div id="new-board-input" hidden>
+                <form class="form-inline">
+                  <label class="sr-only" for="new-board-name">Board name</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2" id="new-board-name" placeholder="Board name">
+                  {% if status != 'Not logged in' %}
+                  <div class="form-check mb-2 mr-sm-2">
+                    <input class="form-check-input" type="checkbox" id="private-checkbox">
+                    <label class="form-check-label" for="private-checkbox">
+                      Private
+                    </label>
+                  </div>
+                  {% endif %}
+                  <button type="button" class="btn btn-primary mb-2" id="create-board">Create Board</button>
+                  <button type="button" class="btn btn-secondary mb-2" id="cancel-board">Cancel</button>
+                </form>
+            </div>
+        </div>
     {% if board_tree|length == 0 %}
         <p>No boards yet</p>
     {% else %}
-        <button type="button" id="add-board" class="btn btn-primary">Add board</button>
-        <div id="new-board-input"></div>
-        <div class="boards-space">
+        <div class="boards-space" align="center">
         {% for i in range(board_tree|length) %}
             <div class="container" id="{{ i }}">
-                <h2 class="row">
+                <h2 class="row private-{{board_tree[i].get('private')}}">
                     {{ board_tree[i].get('title') }}
                     <i class="fas fa-angle-up"></i>
                 </h2>
-                <div class="row" id="{{ i }}-body">
+                <div class="row private-{{board_tree[i].get('private')}}" id="{{ i }}-body">
                     {% for j in range(board_tree[i].get('columns')|length) %}
                         <div class="col">
                             <h4>{{ board_tree[i].get('columns')[j].get('column_name') }}</h4>

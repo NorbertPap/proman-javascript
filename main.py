@@ -50,7 +50,6 @@ def login_and_register():
     data = request.get_json(force=True)
     if data['status'] == 'Login':
         check_user = data_manager.user_login(data['email'], data['password'])
-        print(check_user)
         if check_user[0] is True:
             session['logged_in'] = True
             session['username'] = check_user[2]

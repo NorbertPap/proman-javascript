@@ -41,27 +41,7 @@ function createNewBoard()
 
 function createInputForNewBoard()
 {
-    document.getElementById('new-board-input').innerHTML = `<form class="form-inline">
-                                                                <input type="text" class="form-control mb-2 mr-sm-2" id="new-board-name" placeholder="Board name">
-                                                            
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" name="Private" id="private-radio" value="private-radio" checked>
-                                                                    <label class="form-check-label" for="private-radio">
-                                                                        Private
-                                                                    </label>
-                                                                </div>
-                                                              
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" name="Public" id="public-radio" value="public-radio">
-                                                                    <label class="form-check-label" for="public-radio">
-                                                                        Public
-                                                                    </label>
-                                                                </div>
-                                                            
-                                                                <button type="button" class="btn btn-primary mb-2" id="create-board">Create</button>
-                                                                
-                                                                <button type="button" class="btn btn-secondary mb-2" id="cancel-board">Cancel</button>
-                                                            </form>`;
+    document.getElementById('new-board-input').hidden = false;
     let createButton = document.getElementById('create-board');
     let cancelButton = document.getElementById('cancel-board');
     createButton.addEventListener('click', registerNewBoard);
@@ -71,7 +51,17 @@ function createInputForNewBoard()
 
 function registerNewBoard() {
     let boardName = document.getElementById('new-board-name').value;
-    let boardType = document.getElementById('private-radio').checked ? 'private' : 'public';
+    let boardType;
+
+    if (document.getElementById('private-checkbox') !== null)
+    {
+        boardType = document.getElementById('private-checkbox').checked ? 'private' : 'public';
+    }
+    else
+    {
+        boardType = 'public';
+    }
+
     sendBoardDataToServer(boardName, boardType);
     closeInput();
 }
@@ -79,7 +69,7 @@ function registerNewBoard() {
 
 function closeInput()
 {
-    document.getElementById('new-board-input').innerHTML = '';
+    document.getElementById('new-board-input').hidden = true;
     document.getElementById('add-board').disabled = false;
 }
 

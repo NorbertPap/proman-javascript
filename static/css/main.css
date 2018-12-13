@@ -11,11 +11,18 @@
     color: #1F1F1F;
 }
 
-.row {
+.row.private-1 {
     background-color: #1F1F1F;
     padding: 30px;
     margin: -10px;
 }
+
+.row.private-0 {
+    background-color: #686469;
+    padding: 30px;
+    margin: -10px;
+}
+
 
 .col {
     margin: 0 5px;
@@ -82,3 +89,25 @@ input[type=password]{
 #new-board-input {
     width: 40%;
 }
+
+.container {
+    margin: 30px;
+}
+
+.input-area {
+    text-align: center;
+}
+
+#new-board-input {
+    margin: auto;
+}
+
+#add-board {
+    margin-bottom: 10px;
+}
+
+.private-1{
+
+}
+
+.private-0

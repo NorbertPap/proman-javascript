@@ -37,7 +37,8 @@ def user_login(cursor, email, password):
 @connection.connection_handler
 def get_board_tree(cursor, user_id):
     cursor.execute("""SELECT * FROM boards
-                      WHERE private = 0 OR user_id = %(user_id)s""", {'user_id': user_id})
+                      WHERE private = 0 OR user_id = %(user_id)s
+                      ORDER by private DESC""", {'user_id': user_id})
     boards = cursor.fetchall()
     for board in boards:
         cursor.execute("""SELECT * FROM board_columns
