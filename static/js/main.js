@@ -1,4 +1,3 @@
-import { dom } from "./dom.js";
 // This function is to initialize the application
 function init() {
     submitButton();
@@ -7,6 +6,7 @@ function init() {
     makeCardsDragAndDroppable();
     makeBoardAddingButtonFunctional();
     buttonPress();
+    cardButtonPress();
     openBoards();
     // init data
     dataHandler.init();
@@ -219,6 +219,19 @@ function loginButton()
 }
 
 
+const buttonPress = () => {
+    const btnList = document.querySelectorAll('.column');
+    for (let btn of btnList) {
+        const inputId = btn.id[0] + '-input';
+        const boardId = btn.id[0];
+        const boardColumnId = btn.id[0];
+        btn.addEventListener('click', () => {
+            newColumn(inputId, boardId, boardColumnId);
+        });
+    }
+};
+
+
 const createNewColumn = (columnName, boardId) => {
     const url = '/column';
     const userInput = {columnName: columnName, boardId: boardId};
@@ -237,22 +250,50 @@ const createNewColumn = (columnName, boardId) => {
     });
 };
 
-const buttonPress = () => {
-    const btnList = document.querySelectorAll('.column');
-    for (let btn of btnList) {
-        const inputId = btn.id[0] + '-input';
-        const boardId = btn.id[0];
-        btn.addEventListener('click', () => {
-            newColumn(inputId, boardId);
-        });
-    }
-};
-
 
 const newColumn = (inputId, boardId) => {
     const inputValue = document.getElementById(inputId).value;
     createNewColumn(inputValue, boardId);
 };
+
+
+const cardButtonPress = () => {
+    const btnList = document.querySelectorAll('.btn-sm');
+    for (let btn of btnList) {
+        const inputId = btn.id[0] + '-body';
+        const boardId = btn.id[0];
+        const boardColumnId = btn.id[0];
+        btn.addEventListener('click', () => {
+            newCard(inputId, boardId, boardColumnId);
+        });
+    }
+};
+
+
+const newCard = (inputId, boardId, boardColumnId) => {
+    const inputValue = document.getElementById(inputId).value;
+    createNewCard(inputValue, boardId, boardColumnId);
+};
+
+
+const createNewCard = (cardName, boardId, boardColumnId) => {
+    const url = '/card';
+    const userInput = {cardName: cardName, boardId: boardId, boardColumnId: boardColumnId};
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify(userInput)
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        if(data.attempt === 'successful') {
+            reloadPageBoard();
+        }
+    });
+};
+
 
 function closeInput() {
     document.getElementById('new-board-input').innerHTML = '';

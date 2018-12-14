@@ -66,3 +66,9 @@ def register_new_board(cursor, board_name, board_type, user_id):
 def add_new_column(cursor, column_name, board_id):
     cursor.execute("""INSERT INTO board_columns (column_name, board_id)
                       VALUES (%(column_name)s, %(board_id)s)""", {'column_name': column_name, 'board_id': board_id})
+
+
+@connection.connection_handler
+def add_new_card(cursor, column_name, board_id, board_column_id):
+    cursor.execute("""INSERT INTO board_columns (column_name, board_id, board_column_id)
+                      VALUES (%(column_name)s, %(board_id)s, %(board_column_id)s)""", {'column_name': column_name, 'board_id': board_id, 'board_column_id': board_column_id})
